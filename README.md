@@ -1,4 +1,4 @@
-# docker: rsync & openssh-server
+# docker: rsync & openssh-server 🐋
 
 repo: https://github.com/fphammerle/docker-rsync-sshd
 
