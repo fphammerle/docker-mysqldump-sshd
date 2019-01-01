@@ -27,6 +27,5 @@ $ docker run --name rsync-sshd \
     --volume bob-ssh-config:/home/bob/.ssh:ro \ 
     --init --rm \
     fphammerle/rsync-sshd
-$ ssh -l alice -p 2022 localhost id
-uid=1000(alice) gid=1000(alice) groups=1000(alice)
+$ rsync -av --rsh='ssh -p 2022' alice@localhost:/source /target
 ```
