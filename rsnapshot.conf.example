@@ -29,5 +29,4 @@ ssh_args	-p 2022
 
 sync_first	1
 
-backup	alice@localhost:/home/alice		rsync-sshd-docker
-backup	alice@localhost:/etc		rsync-sshd-docker
+backup	alice@localhost:/		data-volume

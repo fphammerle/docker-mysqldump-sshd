@@ -15,6 +15,7 @@ StrictModes no
 # separated by spaces
 AllowUsers _
 
+ForceCommand /usr/bin/rrsync /data
 AllowAgentForwarding no
 AllowTcpForwarding no
 GatewayPorts no
@@ -22,5 +23,3 @@ X11Forwarding no
 PermitUserEnvironment no
 PermitTTY no
 PrintMotd no
-
-# TODO consider chroot
