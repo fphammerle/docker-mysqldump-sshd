@@ -1,4 +1,8 @@
-# docker: openssh-server
+# docker: rsync & openssh-server
+
+repo: https://github.com/fphammerle/docker-rsync-sshd
+
+docker hub: https://hub.docker.com/r/fphammerle/rsync-sshd
 
 ## example 1
 
