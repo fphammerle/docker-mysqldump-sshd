@@ -1,0 +1,33 @@
+config_version	1.2
+
+snapshot_root	/tmp/rsnapshot/
+
+# do not create $snapshot_root
+#no_create_root	1
+
+cmd_cp		/bin/cp
+cmd_rsync	/usr/bin/rsync
+cmd_ssh	/usr/bin/ssh
+
+retain	alpha	16
+retain	beta	8
+retain	gamma	8
+retain	delta	8	
+
+# 1     Quiet           Print fatal errors only
+# 2     Default         Print errors and warnings only
+# 3     Verbose         Show equivalent shell commands being executed
+# 4     Extra Verbose   Show extra verbose information
+# 5     Debug mode      Everything
+verbose		3
+
+# prevent two instances from running simultaneously and
+# potentially messing up $snapshot_root
+lockfile	/tmp/rsnapshot.pid
+
+ssh_args	-p 2022
+
+sync_first	1
+
+backup	alice@localhost:/home/alice		rsync-sshd-docker
+backup	alice@localhost:/etc		rsync-sshd-docker
