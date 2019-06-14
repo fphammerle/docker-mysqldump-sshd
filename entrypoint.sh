@@ -14,7 +14,12 @@ IFS=','
 for USER in $USERS; do
     if ! id "$USER" 2>/dev/null >/dev/null ; then
         (set -x; adduser -D "$USER")
-        passwd -u "$USER" 2>/dev/null
+        # default after `adduser -D`: !
+        # > User alice not allowed because account is locked
+        # `passwd -u` sets an empty password,
+        # so better insert '*' manually
+        # https://unix.stackexchange.com/a/193131/155174
+        sed -i "s/^${USER}:!:/${USER}:*:/" /etc/shadow
     fi
 done
 
