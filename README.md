@@ -21,6 +21,9 @@ $ ssh -p 2222 -T dump@localhost
 […]
 ```
 
+Git tags `docker/*` contain signed docker image digests:
+https://github.com/fphammerle/docker-mysqldump-sshd/tags
+
 ### Docker Compose 🐙
 
 1. `git clone https://github.com/fphammerle/docker-mysqldump-sshd`
