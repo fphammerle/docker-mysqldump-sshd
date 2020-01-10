@@ -1,4 +1,4 @@
-# docker: openssh-server invoking mysqldump 🐳
+# docker: openssh-server invoking mysqldump 💾 🐳
 
 Create logical backups of [mariadb](https://mariadb.com/kb/en/backup-and-restore-overview/) and [mysql](https://dev.mysql.com/doc/refman/5.7/en/backup-types.html) databases via SSH.
 
