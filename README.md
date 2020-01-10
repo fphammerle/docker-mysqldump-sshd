@@ -11,7 +11,7 @@ See [rsnapshot.conf.example](rsnapshot.conf.example).
 $ sudo docker run --rm \
     -p 2222:2222 \
     -v /some/path/authorized_keys:/home/dump/.ssh/authorized_keys:ro \
-    -e MYSQLDUMP_ARGS='--user dbhost --user=dbuser --password=dbpass --all-databases' \
+    -e MYSQLDUMP_ARGS='--host=dbhost --user=dbuser --password=dbpass --all-databases' \
     fphammerle/mysqldump-sshd
 $ ssh -p 2222 -T dump@localhost
 -- MariaDB dump 10.17  Distrib 10.4.10-MariaDB, for Linux (x86_64)
