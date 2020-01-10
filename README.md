@@ -1,31 +1,28 @@
-# docker: openssh-server restricted to rsync 🐳
+# docker: openssh-server invoking mysqldump 🐳
 
-repo: https://github.com/fphammerle/docker-rsync-sshd
+Whenever a SSH client connects `mysqldump` will be executed.
 
-docker hub: https://hub.docker.com/r/fphammerle/rsync-sshd
-
-SSH clients are restricted to `rsync --server` commands via [rrsync](https://download.samba.org/pub/unpacked/rsync/support/rrsync).
-
-rrsync prefixes `/data` to all paths (e.g., `rsync ... host:/src /backup` downloads `/data/src`).
-
-## example 1
+Useful to fetch backups via [rsnapshot](https://rsnapshot.org/).
+See [rsnapshot.conf.example](rsnapshot.conf.example).
 
 ```sh
-$ docker run --name=rsync-sshd -p 2022:22 -e USERS=alice,bob -v rsync-data:/data:ro fphammerle/rsync-sshd
-$ docker cp alice-keys rsync-sshd:/home/alice/.ssh/authorized_keys
-$ docker cp bob-keys rsync-sshd:/home/bob/.ssh/authorized_keys
+$ sudo docker run --rm \
+    -p 2222:2222 \
+    -v /some/path/authorized_keys:/home/dump/.ssh/authorized_keys:ro \
+    -e MYSQLDUMP_ARGS='--user dbhost --user=dbuser --password=dbpass --all-databases' \
+    fphammerle/mysqldump-sshd
+$ ssh -p 2222 -T dump@localhost
+-- MariaDB dump 10.17  Distrib 10.4.10-MariaDB, for Linux (x86_64)
+--
+-- Host: database    Database: demo
+-- ------------------------------------------------------
+[…]
 ```
 
-## example 2
+### Docker Compose 🐙
 
-```
-$ docker run --name rsync-sshd \
-    --publish 2022:22 --env USERS=alice,bob \
-    --volume accessible-data:/data:ro \
-    --volume host-keys:/etc/ssh/host_keys \
-    --volume alice-ssh-config:/home/alice/.ssh:ro \ 
-    --volume bob-ssh-config:/home/bob/.ssh:ro \ 
-    --init --rm \
-    fphammerle/rsync-sshd
-$ rsync -av --rsh='ssh -p 2022' alice@localhost:/source /target
-```
+1. `git clone https://github.com/fphammerle/docker-mysqldump-sshd`
+2. `cd docker-mysqldump-sshd`
+3. Adapt `$MYSQLDUMP_ARGS` in `docker-compose.yml`
+4. `docker-compose up --build`
+5. Add `authorized_keys` to docker volume `mysqldumpsshd_authorized_keys`.

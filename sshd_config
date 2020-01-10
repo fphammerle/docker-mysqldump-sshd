@@ -1,6 +1,9 @@
-Protocol 2
+PidFile none
+#LogLevel VERBOSE
+#LogLevel DEBUG1
 
-# LogLevel VERBOSE
+Protocol 2
+Port 2222
 
 HostKey /etc/ssh/host_keys/rsa
 
@@ -9,17 +12,24 @@ KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256
 Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
 MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com
 
-PermitRootLogin no
+AllowUsers dump
+AuthenticationMethods publickey
+PubkeyAuthentication yes
 PasswordAuthentication no
+ChallengeResponseAuthentication no
+# dont check file permissions
 StrictModes no
-# separated by spaces
-AllowUsers _
 
-ForceCommand /usr/bin/rrsync /data
 AllowAgentForwarding no
+AllowStreamLocalForwarding no
 AllowTcpForwarding no
+DisableForwarding yes
 GatewayPorts no
-X11Forwarding no
-PermitUserEnvironment no
 PermitTTY no
+PermitTunnel no
+PermitUserEnvironment no
 PrintMotd no
+X11Forwarding no
+
+# sshd invokes shell set in /etc/passwd
+ForceCommand exit 1

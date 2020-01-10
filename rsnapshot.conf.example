@@ -12,7 +12,7 @@ cmd_ssh	/usr/bin/ssh
 retain	alpha	16
 retain	beta	8
 retain	gamma	8
-retain	delta	8	
+retain	delta	8
 
 # 1     Quiet           Print fatal errors only
 # 2     Default         Print errors and warnings only
@@ -25,8 +25,6 @@ verbose		3
 # potentially messing up $snapshot_root
 lockfile	/tmp/rsnapshot.pid
 
-ssh_args	-p 2022
+#sync_first	1
 
-sync_first	1
-
-backup	alice@localhost:/		data-volume
+backup_script	/usr/bin/ssh -T -p 2222 dump@localhost > dump.sql		mysqldump
