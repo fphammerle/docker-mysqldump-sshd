@@ -6,7 +6,7 @@ volumes:
   authorized_keys:
 
 services:
-  database:
+  sample_database:
     image: mariadb:10.4
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
@@ -23,7 +23,7 @@ services:
     image: fphammerle/mysqldump-sshd
     environment:
       MYSQLDUMP_ARGS: >-
-        --host=database
+        --host=sample_database
         --user=someone
         --password=secret
         --skip-add-drop-table
