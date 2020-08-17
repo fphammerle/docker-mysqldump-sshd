@@ -38,8 +38,9 @@ services:
     read_only: true
     ports:
     - 127.0.0.1:2222:2222
-    security_opt: ['no-new-privileges']
+    cap_drop: [ALL]
     # strace
     # cap_add: [SYS_PTRACE]
+    security_opt: [no-new-privileges]
 
 # https://docs.docker.com/compose/compose-file/compose-file-v2/
