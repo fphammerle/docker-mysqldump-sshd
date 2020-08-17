@@ -1,4 +1,4 @@
-version: '2'
+version: '2.2'
 
 volumes:
   database:
@@ -42,5 +42,8 @@ services:
     # strace
     # cap_add: [SYS_PTRACE]
     security_opt: [no-new-privileges]
+    # docker-compose >=2.2,<3
+    cpus: 0.2
+    mem_limit: 64M
 
 # https://docs.docker.com/compose/compose-file/compose-file-v2/
