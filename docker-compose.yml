@@ -1,9 +1,8 @@
-version: '2.2'
+version: '2.3'
 
 volumes:
   database:
-  host_keys:
-  authorized_keys:
+  ssh_host_keys:
 
 services:
   sample_database:
@@ -22,6 +21,9 @@ services:
     build: .
     image: docker.io/fphammerle/mysqldump-sshd
     environment:
+      SSH_CLIENT_PUBLIC_KEYS: |
+        ssh-rsa ...
+        ssh-rsa ...
       MYSQLDUMP_ARGS: >-
         --host=sample_database
         --user=someone
@@ -30,10 +32,18 @@ services:
         --skip-comments
         --skip-dump-date
         --databases demo
-    volumes:
-    - host_keys:/etc/ssh/host_keys:rw
-    - authorized_keys:/home/dump/.ssh:ro
     read_only: true
+    volumes:
+    - type: volume
+      source: ssh_host_keys
+      target: /etc/ssh/host_keys
+      read_only: false
+    - type: tmpfs
+      target: /home/dump/.ssh # authorized_keys
+      tmpfs:
+        # nosuid,nodev,noexec added by default
+        mode: '1777'
+        size: 16k
     ports: ['127.0.0.1:2200:2200']
     cap_drop: [ALL]
     # strace

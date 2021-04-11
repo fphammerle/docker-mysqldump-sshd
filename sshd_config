@@ -32,11 +32,11 @@ AllowStreamLocalForwarding no
 AllowTcpForwarding no
 DisableForwarding yes
 GatewayPorts no
-PermitTTY no
 PermitTunnel no
 X11Forwarding no
 PermitUserEnvironment no
 PrintMotd no
+PermitTTY no
 
 # .* matches until \0
 ForceCommand exec mysqldump $(grep -o 'MYSQLDUMP_ARGS=.*' /proc/1/environ | cut -d = -f 2-)

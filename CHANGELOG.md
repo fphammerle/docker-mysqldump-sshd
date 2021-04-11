@@ -10,9 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `docker-compose`: added cpu & memory resource limits
 
 ### Changed
+- authorize public keys in env var `SSH_CLIENT_PUBLIC_KEYS`
+  (instead of mounting `/home/dump/.ssh/authorized_keys`)
+- fail early when env var `MYSQLDUMP_ARGS` is not set
 - `openssh-server`: listen on port `2200` (previously `2222`)
 - `docker-compose`: read-only container root filesystem
-- fail early when env var `MYSQLDUMP_ARGS` is not set
+- `docker-compose`: require version `2.3`
 
 ### Fixed
 - `Dockerfile` & `docker-compose`: add registry to base image specifiers for `podman`

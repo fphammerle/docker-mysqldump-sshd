@@ -11,6 +11,9 @@ if [ ! -f "$SSHD_HOST_KEYS_DIR/ed25519" ]; then
 fi
 unset SSHD_HOST_KEYS_DIR
 
+printenv SSH_CLIENT_PUBLIC_KEYS > ~/.ssh/authorized_keys
+unset SSH_CLIENT_PUBLIC_KEYS
+
 if [ -z "$MYSQLDUMP_ARGS" ]; then
     echo -e 'missing environment variable MYSQLDUMP_ARGS\n' >&2
     set -x

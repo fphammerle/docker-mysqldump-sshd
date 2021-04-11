@@ -8,11 +8,13 @@ Useful to fetch backups via [rsnapshot](https://rsnapshot.org/).
 See [rsnapshot.conf.example](rsnapshot.conf.example).
 
 ```sh
-$ sudo docker run --rm \
+$ sudo docker run --rm --name mysqldump_ssh \
     -p 2200:2200 \
-    -v /some/path/authorized_keys:/home/dump/.ssh/authorized_keys:ro \
+    -e SSH_CLIENT_PUBLIC_KEYS="$(cat ~/.ssh/id_*.pub)" \
+    --tmpfs /home/dump/.ssh:mode=1777,size=16k \
     -e MYSQLDUMP_ARGS='--host=dbhost --user=dbuser --password=dbpass --all-databases' \
-    fphammerle/mysqldump-sshd
+    --read-only --security-opt=no-new-privileges --cap-drop=ALL \
+    docker.io/fphammerle/mysqldump-sshd
 $ ssh -p 2200 -T dump@localhost
 -- MariaDB dump 10.17  Distrib 10.4.10-MariaDB, for Linux (x86_64)
 --
