@@ -6,14 +6,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- `openssh-server`: added `ed25519` host key
 - `docker-compose`: added cpu & memory resource limits
 
 ### Changed
-- listen on port `2200` (previously `2222`)
+- `openssh-server`: listen on port `2200` (previously `2222`)
 - `docker-compose`: read-only container root filesystem
 
 ### Fixed
 - `docker-compose`: drop capabilities, disallow gaining new privileges
+
+### Removed
+- `openssh-server`: disabled message authentication code algorithms
+  `hmac-sha2-512`, `hmac-sha2-256` & `umac-128@openssh.com`
+  (as recommended by `ssh-audit.com`)
 
 ## [1.0.0] - 2020-01-10
 ### Added
