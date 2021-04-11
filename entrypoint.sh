@@ -20,5 +20,6 @@ if [ -z "$MYSQLDUMP_ARGS" ]; then
     mysqldump --help
     exit 1
 fi
+unset MYSQLDUMP_ARGS
 
 exec "$@"
