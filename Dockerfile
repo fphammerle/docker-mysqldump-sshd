@@ -19,7 +19,7 @@ VOLUME $SSHD_HOST_KEYS_DIR
 COPY sshd_config /etc/ssh/sshd_config
 EXPOSE 2200/tcp
 
-ENV MYSQLDUMP_ARGS --help
+ENV MYSQLDUMP_ARGS=
 COPY entrypoint.sh /
 ENTRYPOINT ["/sbin/tini", "--", "/entrypoint.sh"]
 

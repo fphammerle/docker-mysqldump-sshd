@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - `openssh-server`: listen on port `2200` (previously `2222`)
 - `docker-compose`: read-only container root filesystem
+- fail early when env var `MYSQLDUMP_ARGS` is not set
 
 ### Fixed
 - `Dockerfile` & `docker-compose`: add registry to base image specifiers for `podman`

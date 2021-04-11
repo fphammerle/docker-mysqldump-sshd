@@ -7,7 +7,7 @@ volumes:
 
 services:
   sample_database:
-    image: docker.io/mariadb:10.4
+    image: docker.io/mariadb:10.5.8
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
       MYSQL_USER: someone
