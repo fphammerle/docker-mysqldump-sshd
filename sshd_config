@@ -1,6 +1,7 @@
+LogLevel INFO
+#LogLevel DEBUG
+
 PidFile none
-#LogLevel VERBOSE
-#LogLevel DEBUG1
 
 Protocol 2
 Port 2222
