@@ -38,5 +38,5 @@ X11Forwarding no
 PermitUserEnvironment no
 PrintMotd no
 
-# sshd invokes shell set in /etc/passwd
-ForceCommand exit 1
+# .* matches until \0
+ForceCommand exec mysqldump $(grep -o 'MYSQLDUMP_ARGS=.*' /proc/1/environ | cut -d = -f 2-)

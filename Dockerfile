@@ -9,7 +9,7 @@ RUN apk add --no-cache \
         mariadb-client=$MARIADB_CLIENT_PACKAGE_VERSION \
         openssh-server=$OPENSSH_PACKAGE_VERSION \
         tini=$TINI_PACKAGE_VERSION \
-    && adduser -S -s /tmp/mysqldump.sh "$USER" \
+    && adduser -S -s /bin/ash "$USER" \
     && mkdir "$SSHD_HOST_KEYS_DIR" \
     && chown -c "$USER" "$SSHD_HOST_KEYS_DIR"
 VOLUME $SSHD_HOST_KEYS_DIR

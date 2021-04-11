@@ -17,7 +17,5 @@ if [ -z "$MYSQLDUMP_ARGS" ]; then
     mysqldump --help
     exit 1
 fi
-echo -e "#!/bin/sh\nexec mysqldump $MYSQLDUMP_ARGS" > /tmp/mysqldump.sh
-chmod u+x /tmp/mysqldump.sh
 
 exec "$@"
