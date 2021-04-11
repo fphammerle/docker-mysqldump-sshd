@@ -25,3 +25,9 @@ ENTRYPOINT ["/sbin/tini", "--", "/entrypoint.sh"]
 
 USER $USER
 CMD ["/usr/sbin/sshd", "-D", "-e"]
+
+# https://github.com/opencontainers/image-spec/blob/v1.0.1/annotations.md
+ARG REVISION=
+LABEL org.opencontainers.image.title="single-user openssh server executing mysqldump when client connects" \
+    org.opencontainers.image.source="https://github.com/fphammerle/docker-mysqldump-sshd" \
+    org.opencontainers.image.revision="$REVISION"

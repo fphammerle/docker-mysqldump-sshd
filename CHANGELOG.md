@@ -6,8 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- `openssh-server`: added `ed25519` host key
-- `docker-compose`: added cpu & memory resource limits
+- `openssh-server`: `ed25519` host key
+- `docker-compose`: cpu & memory resource limits
+- image labels:
+  - `org.opencontainers.image.revision` (git commit hash via build arg)
+  - `org.opencontainers.image.source` (repo url)
+  - `org.opencontainers.image.title`
 
 ### Changed
 - authorize public keys in env var `SSH_CLIENT_PUBLIC_KEYS`
