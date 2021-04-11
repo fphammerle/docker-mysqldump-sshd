@@ -24,13 +24,12 @@ AuthenticationMethods publickey
 PubkeyAuthentication yes
 PasswordAuthentication no
 ChallengeResponseAuthentication no
-# dont check file permissions
 StrictModes no
 
+DisableForwarding yes
 AllowAgentForwarding no
 AllowStreamLocalForwarding no
 AllowTcpForwarding no
-DisableForwarding yes
 GatewayPorts no
 PermitTunnel no
 X11Forwarding no
