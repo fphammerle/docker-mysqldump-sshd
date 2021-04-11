@@ -37,7 +37,7 @@ services:
     - /tmp:nosuid,nodev,exec,size=4k # /tmp/mysqldump.sh
     read_only: true
     ports:
-    - 127.0.0.1:2222:2222
+    - 127.0.0.1:2200:2200
     cap_drop: [ALL]
     # strace
     # cap_add: [SYS_PTRACE]

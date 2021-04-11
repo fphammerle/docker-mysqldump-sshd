@@ -3,8 +3,8 @@ LogLevel INFO
 
 PidFile none
 
+Port 2200
 Protocol 2
-Port 2222
 
 HostKey /etc/ssh/host_keys/rsa
 

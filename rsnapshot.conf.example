@@ -27,4 +27,4 @@ lockfile	/tmp/rsnapshot.pid
 
 #sync_first	1
 
-backup_script	/usr/bin/ssh -T -p 2222 dump@localhost > dump.sql		mysqldump
+backup_script	/usr/bin/ssh -T -p 2200 dump@localhost > dump.sql		mysqldump

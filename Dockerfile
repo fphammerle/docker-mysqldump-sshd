@@ -24,5 +24,5 @@ RUN chmod a=rx /entrypoint.sh \
 VOLUME $SSHD_HOST_KEYS_DIR
 
 USER dump
-EXPOSE 2222/tcp
+EXPOSE 2200/tcp
 CMD ["/usr/sbin/sshd", "-D", "-e"]

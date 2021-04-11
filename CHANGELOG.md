@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `docker-compose`: added cpu & memory resource limits
 
 ### Changed
+- listen on port `2200` (previously `2222`)
 - `docker-compose`: read-only container root filesystem
 
 ### Fixed

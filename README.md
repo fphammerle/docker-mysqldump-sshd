@@ -9,11 +9,11 @@ See [rsnapshot.conf.example](rsnapshot.conf.example).
 
 ```sh
 $ sudo docker run --rm \
-    -p 2222:2222 \
+    -p 2200:2200 \
     -v /some/path/authorized_keys:/home/dump/.ssh/authorized_keys:ro \
     -e MYSQLDUMP_ARGS='--host=dbhost --user=dbuser --password=dbpass --all-databases' \
     fphammerle/mysqldump-sshd
-$ ssh -p 2222 -T dump@localhost
+$ ssh -p 2200 -T dump@localhost
 -- MariaDB dump 10.17  Distrib 10.4.10-MariaDB, for Linux (x86_64)
 --
 -- Host: database    Database: demo
