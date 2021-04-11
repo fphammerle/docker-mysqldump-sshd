@@ -33,6 +33,5 @@ if `/proc` is mounted with `hidepid=0` (default).
 
 1. `git clone https://github.com/fphammerle/docker-mysqldump-sshd`
 2. `cd docker-mysqldump-sshd`
-3. Adapt `$MYSQLDUMP_ARGS` in `docker-compose.yml`
+3. Adapt `SSH_CLIENT_PUBLIC_KEYS` and `MYSQLDUMP_ARGS` in `docker-compose.yml`.
 4. `docker-compose up --build`
-5. Add `authorized_keys` to docker volume `mysqldumpsshd_authorized_keys`.
