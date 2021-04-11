@@ -7,7 +7,7 @@ volumes:
 
 services:
   sample_database:
-    image: mariadb:10.4
+    image: docker.io/mariadb:10.4
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
       MYSQL_USER: someone
@@ -20,7 +20,7 @@ services:
     - database:/var/lib/mysql:rw
   sshd:
     build: .
-    image: fphammerle/mysqldump-sshd
+    image: docker.io/fphammerle/mysqldump-sshd
     environment:
       MYSQLDUMP_ARGS: >-
         --host=sample_database
@@ -36,8 +36,7 @@ services:
     tmpfs:
     - /tmp:nosuid,nodev,exec,size=4k # /tmp/mysqldump.sh
     read_only: true
-    ports:
-    - 127.0.0.1:2200:2200
+    ports: ['127.0.0.1:2200:2200']
     cap_drop: [ALL]
     # strace
     # cap_add: [SYS_PTRACE]

@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `docker-compose`: read-only container root filesystem
 
 ### Fixed
+- `Dockerfile` & `docker-compose`: add registry to base image specifiers for `podman`
 - `docker-compose`: drop capabilities, disallow gaining new privileges
 
 ### Removed
