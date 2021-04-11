@@ -26,6 +26,9 @@ $ ssh -p 2200 -T dump@localhost
 Git tags `docker/*` contain signed docker image digests:
 https://github.com/fphammerle/docker-mysqldump-sshd/tags
 
+⚠️  `MYSQLDUMP_ARGS=--password=...` leaks the password to other users on the same machine,
+if `/proc` is mounted with `hidepid=0` (default).
+
 ### Docker Compose 🐙
 
 1. `git clone https://github.com/fphammerle/docker-mysqldump-sshd`
