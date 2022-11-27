@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - `sshd`: no longer accept RSA keys < 2048 bits for authentication
 
+### Fixed
+- protect against `SSH_CLIENT_PUBLIC_KEYS` containing term "MYSQLDUMP_ARGS="
+
 ## [2.0.1] - 2021-06-20
 ### Fixed
 - entrypoint: unset no longer needed `MYSQLDUMP_ARGS` variable
